@@ -4,8 +4,8 @@ English below · [Tiếng Việt ở phía dưới](#trang-web-cá-nhân)
 
 A static personal website built with [Astro](https://astro.build): bilingual (VI/EN), light/dark mode, deployed on Vercel.
 
-- Live site: https://tranhoangviet.vercel.app
-- Source: https://github.com/Viet1803/MyPortfolio
+- Live site: https://tranhoangviet.vercel.app (Vercel) and https://viet1803.github.io (GitHub Pages)
+- Source: https://github.com/Viet1803/Viet1803.github.io
 
 Every push to the `main` branch triggers a new Vercel build and deploy within about a minute.
 
@@ -123,8 +123,8 @@ public/           favicon, robots.txt, images
 
 Site tĩnh xây bằng [Astro](https://astro.build), hai ngôn ngữ (VI/EN), chế độ sáng/tối, deploy trên Vercel.
 
-- Site: https://tranhoangviet.vercel.app
-- Mã nguồn: https://github.com/Viet1803/MyPortfolio
+- Site: https://tranhoangviet.vercel.app (Vercel) và https://viet1803.github.io (GitHub Pages)
+- Mã nguồn: https://github.com/Viet1803/Viet1803.github.io
 
 Mỗi lần push lên nhánh `main`, Vercel tự build và deploy lại trong khoảng 1 phút.
 

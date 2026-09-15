@@ -150,7 +150,7 @@ Tổng khoảng 30 file.
 - Menu hamburger trên mobile, ảnh dùng `<Image>` của Astro (tự nén, lazy-load), kích thước font/khoảng cách hợp lý.
 - **Kiểm tra**: Chrome DevTools Lighthouse (mobile) cho trang chủ và trang dự án: Performance, Accessibility, Best Practices, SEO đều ≥ 90. Thử trên 375px, 768px, 1280px.
 
-### Bước 10. Đưa lên Git và deploy Vercel ✅ (2026-09-15: repo https://github.com/Viet1803/MyPortfolio, site https://tranhoangviet.vercel.app, `/` → `/vi/` trả 307, sitemap 14 URL)
+### Bước 10. Đưa lên Git và deploy Vercel ✅ (2026-09-15: repo https://github.com/Viet1803/Viet1803.github.io, site https://tranhoangviet.vercel.app, `/` → `/vi/` trả 307, sitemap 14 URL)
 - Commit toàn bộ, tạo repo GitHub, push.
 - Vào vercel.com → Import repo → Vercel tự nhận Astro (build `npm run build`, output `dist`). Deploy.
 - Cập nhật `site` trong `astro.config.mjs` thành URL Vercel thật, push lại để sitemap/canonical đúng.
