@@ -2,7 +2,7 @@ import type { Lang } from '../i18n/ui';
 
 /**
  * Nội dung dài của trang Giới thiệu, có 2 bản VI/EN.
- * Toàn bộ là nội dung mẫu, thay bằng thông tin thật của bạn.
+ * Tên trường và mốc thời gian là placeholder, thay bằng thông tin thật của bạn.
  */
 export interface TimelineItem {
   period: string;
@@ -26,73 +26,59 @@ export interface Profile {
 export const profile: Record<Lang, Profile> = {
   vi: {
     bio: [
-      'Tôi là lập trình viên web với hơn 3 năm kinh nghiệm xây dựng sản phẩm cho doanh nghiệp nhỏ và startup. Tôi làm việc chủ yếu với TypeScript, React và Node.js, và thích những giải pháp đơn giản, chạy nhanh và dễ bảo trì.',
-      'Tôi tin rằng một website tốt phải tải nhanh, dùng được trên mọi thiết bị và dễ hiểu với người dùng. Ngoài viết code, tôi thường tham gia từ giai đoạn lên ý tưởng đến khi bàn giao, nên quen với việc trao đổi trực tiếp với khách hàng và đội ngũ thiết kế.',
-      'Hiện tôi nhận công việc toàn thời gian hoặc dự án freelance liên quan đến phát triển web.',
+      'Tôi là sinh viên năm nhất ngành Khoa học máy tính. Tôi đang học những nền tảng đầu tiên về lập trình, giải quyết vấn đề và cách phần mềm được xây dựng, từ dòng code đầu tiên đến khi đưa một sản phẩm lên mạng.',
+      'Trang web này là dự án cá nhân đầu tiên của tôi. Nó được tạo ra với sự hỗ trợ của Claude, trợ lý AI của Anthropic: tôi đưa ra yêu cầu, cùng lên kế hoạch, rà soát từng bước và học cách mọi thứ hoạt động, còn Claude giúp viết code và kiểm tra. Toàn bộ mã nguồn được công khai trên GitHub.',
+      'Trong bốn năm tới, tôi sẽ dùng trang này để ghi lại quá trình học: bài lab, đồ án môn học, dự án cá nhân và sau này là thực tập hoặc nghiên cứu.',
     ],
     skills: [
-      { name: 'Frontend', items: ['HTML', 'CSS', 'TypeScript', 'React', 'Astro', 'Next.js'] },
-      { name: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'REST API'] },
-      { name: 'Công cụ', items: ['Git', 'GitHub Actions', 'Docker', 'Vercel', 'Figma'] },
+      { name: 'Đang học', items: ['Tư duy lập trình', 'Giải quyết vấn đề', 'HTML', 'CSS', 'TypeScript'] },
+      { name: 'Công cụ', items: ['Git', 'GitHub', 'GitHub Actions', 'VS Code', 'Vercel'] },
+      { name: 'Đã dùng trong dự án', items: ['Astro', 'Markdown', 'GitHub Pages'] },
     ],
     experience: [
       {
-        period: '2024 – nay',
-        title: 'Lập trình viên frontend',
-        org: 'Công ty ABC',
+        period: '2026 – nay',
+        title: 'Dự án cá nhân: trang web portfolio',
+        org: 'Tự thực hiện, với sự hỗ trợ của Claude',
         description:
-          'Xây dựng và duy trì giao diện web cho sản phẩm SaaS quản lý bán hàng. Cải thiện tốc độ tải trang chính giảm 40% và dẫn dắt việc chuyển sang TypeScript.',
-      },
-      {
-        period: '2022 – 2024',
-        title: 'Lập trình viên web (freelance)',
-        org: 'Tự do',
-        description:
-          'Hoàn thành hơn 10 website cho cửa hàng, phòng khám và dịch vụ địa phương. Phụ trách từ thiết kế, lập trình đến triển khai và hướng dẫn khách hàng sử dụng.',
+          'Xây dựng website hai ngôn ngữ bằng Astro, quản lý mã nguồn bằng Git và GitHub, deploy tự động lên Vercel và GitHub Pages. Học cách lập kế hoạch, kiểm tra từng bước và viết tài liệu cho dự án.',
       },
     ],
     education: [
       {
-        period: '2018 – 2022',
-        title: 'Cử nhân Công nghệ thông tin',
-        org: 'Đại học XYZ',
-        description: 'Chuyên ngành Kỹ thuật phần mềm. Đồ án tốt nghiệp về hệ thống quản lý học tập trực tuyến.',
+        period: '2026 – nay',
+        title: 'Cử nhân Khoa học máy tính, năm nhất',
+        org: 'Tên trường của bạn',
+        description: 'Các môn đang học: nhập môn lập trình, GitHub và portfolio ngành CS (CSE 1106).',
       },
     ],
   },
   en: {
     bio: [
-      'I am a web developer with 3+ years of experience building products for small businesses and startups. I work mostly with TypeScript, React and Node.js, and I prefer solutions that are simple, fast and easy to maintain.',
-      'I believe a good website loads quickly, works on every device and is easy to understand. Beyond writing code, I usually take part from the idea stage through to hand-off, so I am used to working directly with clients and designers.',
-      'I am currently open to full-time roles and freelance web development projects.',
+      'I am a computer science freshman. I am learning the fundamentals of programming and problem solving, and how software is built, from the first line of code to a product running online.',
+      'This website is my first personal project. It was created with the help of Claude, the AI assistant made by Anthropic: I set the requirements, planned the work together, reviewed each step and learned how things work, while Claude helped write and test the code. The full source code is public on GitHub.',
+      'Over the next four years I will use this site to document my progress: labs, coursework, personal projects and, later, internships or research.',
     ],
     skills: [
-      { name: 'Frontend', items: ['HTML', 'CSS', 'TypeScript', 'React', 'Astro', 'Next.js'] },
-      { name: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'REST API'] },
-      { name: 'Tools', items: ['Git', 'GitHub Actions', 'Docker', 'Vercel', 'Figma'] },
+      { name: 'Learning', items: ['Programming fundamentals', 'Problem solving', 'HTML', 'CSS', 'TypeScript'] },
+      { name: 'Tools', items: ['Git', 'GitHub', 'GitHub Actions', 'VS Code', 'Vercel'] },
+      { name: 'Used in projects', items: ['Astro', 'Markdown', 'GitHub Pages'] },
     ],
     experience: [
       {
-        period: '2024 – present',
-        title: 'Frontend Developer',
-        org: 'ABC Company',
+        period: '2026 – present',
+        title: 'Personal project: portfolio website',
+        org: 'Self-directed, with help from Claude',
         description:
-          'Build and maintain the web UI of a retail management SaaS product. Cut main page load time by 40% and led the migration to TypeScript.',
-      },
-      {
-        period: '2022 – 2024',
-        title: 'Web Developer (freelance)',
-        org: 'Self-employed',
-        description:
-          'Delivered 10+ websites for shops, clinics and local services. Handled design, development, deployment and client training end to end.',
+          'Built a bilingual website with Astro, managed the source with Git and GitHub, and set up automatic deployment to Vercel and GitHub Pages. Learned to plan, verify each step and document a project.',
       },
     ],
     education: [
       {
-        period: '2018 – 2022',
-        title: 'B.Sc. in Information Technology',
-        org: 'XYZ University',
-        description: 'Major in Software Engineering. Graduation project on an online learning management system.',
+        period: '2026 – present',
+        title: 'B.Sc. in Computer Science, first year',
+        org: 'Your University',
+        description: 'Current courses: introduction to programming, GitHub and CS portfolio (CSE 1106).',
       },
     ],
   },

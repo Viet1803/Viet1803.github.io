@@ -2,7 +2,9 @@
 
 English below · [Tiếng Việt ở phía dưới](#trang-web-cá-nhân)
 
-A static personal website built with [Astro](https://astro.build): bilingual (VI/EN), light/dark mode, deployed on Vercel.
+A static personal website built with [Astro](https://astro.build): bilingual (VI/EN), light/dark mode, deployed on Vercel and GitHub Pages.
+
+This website was created with the help of [Claude](https://claude.ai), the AI assistant made by Anthropic. I set the requirements, planned the work together with Claude, reviewed each step and learned how everything works, while Claude helped write and test the code. The plan we followed is in [PLAN.md](PLAN.md).
 
 - Live site: https://tranhoangviet.vercel.app (Vercel) and https://viet1803.github.io (GitHub Pages)
 - Source: https://github.com/Viet1803/Viet1803.github.io
@@ -121,7 +123,9 @@ public/           favicon, robots.txt, images
 
 [English above](#personal-website)
 
-Site tĩnh xây bằng [Astro](https://astro.build), hai ngôn ngữ (VI/EN), chế độ sáng/tối, deploy trên Vercel.
+Site tĩnh xây bằng [Astro](https://astro.build), hai ngôn ngữ (VI/EN), chế độ sáng/tối, deploy trên Vercel và GitHub Pages.
+
+Trang web này được tạo ra với sự hỗ trợ của [Claude](https://claude.ai), trợ lý AI của Anthropic. Tôi đưa ra yêu cầu, cùng Claude lên kế hoạch, rà soát từng bước và học cách mọi thứ hoạt động, còn Claude giúp viết code và kiểm tra. Kế hoạch đã thực hiện nằm ở [PLAN.md](PLAN.md).
 
 - Site: https://tranhoangviet.vercel.app (Vercel) và https://viet1803.github.io (GitHub Pages)
 - Mã nguồn: https://github.com/Viet1803/Viet1803.github.io

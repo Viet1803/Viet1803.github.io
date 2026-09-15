@@ -15,9 +15,9 @@ export const defaultLang: Lang = 'en';
 
 export const ui = {
   vi: {
-    'site.tagline': 'Lập trình viên web',
+    'site.tagline': 'Sinh viên năm nhất Khoa học máy tính',
     'site.description':
-      'Trang cá nhân của Trần Hoàng Việt: giới thiệu, hồ sơ năng lực, dự án đã thực hiện và thông tin liên hệ.',
+      'Trang cá nhân của Trần Hoàng Việt, sinh viên năm nhất Khoa học máy tính: giới thiệu, kỹ năng, dự án và thông tin liên hệ.',
 
     'nav.home': 'Trang chủ',
     'nav.about': 'Giới thiệu',
@@ -33,7 +33,7 @@ export const ui = {
     'home.title': 'Trang chủ',
     'home.greeting': 'Xin chào, tôi là',
     'home.intro':
-      'Tôi xây dựng website và ứng dụng web nhanh, dễ dùng và dễ bảo trì. Tôi quan tâm đến trải nghiệm người dùng, hiệu năng và mã nguồn sạch.',
+      'Tôi đang học những nền tảng đầu tiên của lập trình và cách phần mềm được xây dựng. Trang này ghi lại các dự án và quá trình học của tôi, được tạo với sự hỗ trợ của Claude.',
     'home.cta.projects': 'Xem dự án',
     'home.cta.contact': 'Liên hệ',
     'home.featured': 'Dự án nổi bật',
@@ -69,9 +69,9 @@ export const ui = {
     '404.home': 'Về trang chủ',
   },
   en: {
-    'site.tagline': 'Web Developer',
+    'site.tagline': 'Computer Science Freshman',
     'site.description':
-      'Personal website of Hoang Viet Tran: about, skills and experience, selected projects, and contact information.',
+      'Personal website of Hoang Viet Tran, computer science freshman: about, skills, projects and contact information.',
 
     'nav.home': 'Home',
     'nav.about': 'About',
@@ -87,7 +87,7 @@ export const ui = {
     'home.title': 'Home',
     'home.greeting': "Hi, I'm",
     'home.intro':
-      'I build fast, usable and maintainable websites and web apps. I care about user experience, performance and clean code.',
+      'I am learning the fundamentals of programming and how software is built. This site documents my projects and progress, and was created with the help of Claude.',
     'home.cta.projects': 'View projects',
     'home.cta.contact': 'Get in touch',
     'home.featured': 'Featured projects',
