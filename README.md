@@ -2,6 +2,11 @@
 
 Site tĩnh xây bằng [Astro](https://astro.build), hai ngôn ngữ (VI/EN), chế độ sáng/tối, deploy trên Vercel.
 
+- Site: https://tranhoangviet.vercel.app
+- Mã nguồn: https://github.com/Viet1803/MyPortfolio
+
+Mỗi lần push lên nhánh `main`, Vercel tự build và deploy lại trong khoảng 1 phút.
+
 ## Chạy trên máy
 
 Cần Node.js 22 trở lên (đang dùng bản 24, xem `.nvmrc`).
