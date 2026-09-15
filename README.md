@@ -9,6 +9,16 @@ A static personal website built with [Astro](https://astro.build): bilingual (VI
 
 Every push to the `main` branch triggers a new Vercel build and deploy within about a minute.
 
+## Technologies
+
+- **Astro 7**: static site generator, outputs plain HTML with almost no client-side JavaScript
+- **TypeScript**: typed data files, i18n helpers and content schema
+- **HTML / CSS**: hand-written layout with CSS custom properties for light/dark themes, no CSS framework
+- **Markdown**: each project is a Markdown file validated by a schema at build time
+- **Inter** (self-hosted variable font) with full Vietnamese diacritics support
+- **Vercel**: hosting and automatic deploys from GitHub
+- **Git / GitHub**: version control and source hosting
+
 ## Run locally
 
 Requires Node.js 22 or newer (currently using 24, see `.nvmrc`).
@@ -86,6 +96,25 @@ public/           favicon, robots.txt, images
 2. On vercel.com → Add New Project → Import the repo. Vercel detects Astro automatically (build `npm run build`, output `dist`).
 3. Once you have the real URL, update `SITE_URL` in `astro.config.mjs`, `url` in `src/data/site.ts`, and `Sitemap:` in `public/robots.txt`, then push again.
 
+## What I learned
+
+- How to plan a project before coding: clarify the brief, choose a stack, and break the work into small verifiable steps (see [PLAN.md](PLAN.md)).
+- How Astro turns components and Markdown into a fully static site, and why that makes the site fast and easy to host.
+- How to build a bilingual site with URL-based routing (`/en/`, `/vi/`), `hreflang` tags and a language switcher that keeps the current page.
+- How to implement a light/dark theme that respects the system setting and remembers the user's choice without flashing on load.
+- Basic SEO: canonical URLs, Open Graph tags, sitemap and robots.txt.
+- The Git workflow used throughout: edit → `git add` → `git commit` → `git push`, and how Vercel deploys automatically from the `main` branch.
+- How to measure quality with Lighthouse and fix what it reports (a color-contrast issue in dark mode was found and fixed this way).
+
+## Future improvements
+
+- Replace all placeholder content (bio, projects, avatar, email, social links) with real information.
+- Add a real CV in PDF form for both languages.
+- Add an Open Graph image so shared links show a preview card.
+- Add a blog section using the same content-collection setup as projects.
+- Consider a contact form (e.g. Formspree) if email alone is not enough.
+- Add a custom domain.
+
 ---
 
 # Trang web cá nhân
@@ -98,6 +127,16 @@ Site tĩnh xây bằng [Astro](https://astro.build), hai ngôn ngữ (VI/EN), ch
 - Mã nguồn: https://github.com/Viet1803/MyPortfolio
 
 Mỗi lần push lên nhánh `main`, Vercel tự build và deploy lại trong khoảng 1 phút.
+
+## Công nghệ
+
+- **Astro 7**: sinh site tĩnh, xuất HTML thuần, gần như không có JavaScript phía client
+- **TypeScript**: file dữ liệu có kiểu, hàm i18n và schema nội dung
+- **HTML / CSS**: tự viết layout, dùng CSS custom properties cho chế độ sáng/tối, không dùng framework CSS
+- **Markdown**: mỗi dự án là một file Markdown, được kiểm tra schema lúc build
+- **Inter** (font biến thiên self-host) hỗ trợ đầy đủ dấu tiếng Việt
+- **Vercel**: hosting và tự động deploy từ GitHub
+- **Git / GitHub**: quản lý phiên bản và lưu mã nguồn
 
 ## Chạy trên máy
 
@@ -175,3 +214,23 @@ public/           favicon, robots.txt, ảnh
 1. Push repo lên GitHub.
 2. Vào vercel.com → Add New Project → Import repo. Vercel tự nhận diện Astro (build `npm run build`, output `dist`).
 3. Sau khi có URL thật, sửa `SITE_URL` trong `astro.config.mjs`, `url` trong `src/data/site.ts`, và `Sitemap:` trong `public/robots.txt`, rồi push lại.
+
+## Điều đã học được
+
+- Cách lập kế hoạch trước khi viết code: làm rõ yêu cầu, chọn stack, chia việc thành các bước nhỏ kiểm tra được (xem [PLAN.md](PLAN.md)).
+- Cách Astro biến component và Markdown thành site tĩnh hoàn toàn, và vì sao điều đó giúp site nhanh và dễ host.
+- Cách xây site hai ngôn ngữ theo URL (`/en/`, `/vi/`), thẻ `hreflang` và nút chuyển ngôn ngữ giữ nguyên trang đang xem.
+- Cách làm chế độ sáng/tối theo hệ thống, nhớ lựa chọn của người dùng và không nháy màu khi tải.
+- SEO cơ bản: canonical, Open Graph, sitemap và robots.txt.
+- Quy trình Git dùng xuyên suốt: sửa → `git add` → `git commit` → `git push`, và cách Vercel tự deploy từ nhánh `main`.
+- Cách đo chất lượng bằng Lighthouse và sửa theo báo cáo (một lỗi tương phản màu ở dark mode được phát hiện và sửa nhờ cách này).
+
+## Hướng cải tiến
+
+- Thay toàn bộ nội dung mẫu (tiểu sử, dự án, ảnh đại diện, email, mạng xã hội) bằng thông tin thật.
+- Thêm CV PDF thật cho cả hai ngôn ngữ.
+- Thêm ảnh Open Graph để khi chia sẻ link có thẻ xem trước.
+- Thêm mục Blog dùng cùng cơ chế content collection như dự án.
+- Cân nhắc form liên hệ (ví dụ Formspree) nếu chỉ email là chưa đủ.
+- Thêm tên miền riêng.
+
