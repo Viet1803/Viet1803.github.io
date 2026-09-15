@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# file do extension C/C++ Runner cua VS Code tu sinh, khong thuoc du an
+.vscode/settings.json
+.vscode/c_cpp_properties.json
