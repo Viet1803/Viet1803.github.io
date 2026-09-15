@@ -26,3 +26,6 @@ pnpm-debug.log*
 # file do extension C/C++ Runner cua VS Code tu sinh, khong thuoc du an
 .vscode/settings.json
 .vscode/c_cpp_properties.json
+
+# cau hinh cuc bo cua Claude Code
+.claude/
