@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLang } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+// Trang 404 dùng chung cho mọi URL nên hiển thị cả hai ngôn ngữ.
+const vi = useTranslations('vi');
+const en = useTranslations('en');
+---
+
+<BaseLayout title={`${vi('404.title')} / ${en('404.title')}`} description={vi('404.text')} lang={defaultLang} alternatePath={localizePath('en')}>
+  <section class="section">
+    <div class="container not-found">
+      <p class="code muted">404</p>
+
+      <div lang="vi">
+        <h1>{vi('404.title')}</h1>
+        <p class="lead">{vi('404.text')}</p>
+        <a class="btn" href={localizePath('vi')}>{vi('404.home')}</a>
+      </div>
+
+      <hr />
+
+      <div lang="en">
+        <h2>{en('404.title')}</h2>
+        <p class="lead">{en('404.text')}</p>
+        <a class="btn btn-outline" href={localizePath('en')}>{en('404.home')}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    max-width: 40rem;
+  }
+  .code {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  hr {
+    max-width: 8rem;
+    margin-inline: 0;
+  }
+</style>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tranhoangviet.vercel.app/sitemap-index.xml

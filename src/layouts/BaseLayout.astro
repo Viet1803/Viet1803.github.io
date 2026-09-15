@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Lang } from '../i18n/ui';
+import { getAlternatePath, otherLang } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  /** Đường dẫn trang tương ứng ở ngôn ngữ kia. Mặc định: cùng đường dẫn, đổi tiền tố. */
+  alternatePath?: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const { title, description, lang, image, type } = Astro.props;
+const alternatePath = Astro.props.alternatePath ?? getAlternatePath(Astro.url.pathname, otherLang(lang));
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <SEO title={title} description={description} lang={lang} alternatePath={alternatePath} image={image} type={type} />
+
+    {/* Đặt theme trước khi render để không nháy màu. Không có lựa chọn đã lưu thì theo hệ thống. */}
+    <script is:inline>
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <Header lang={lang} alternatePath={alternatePath} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

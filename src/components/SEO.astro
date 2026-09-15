@@ -1,0 +1,52 @@
+---
+import { site } from '../data/site';
+import { localeOf, otherLang, getAlternatePath } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  /** Đường dẫn trang tương ứng ở ngôn ngữ kia. Mặc định: cùng đường dẫn, đổi tiền tố. */
+  alternatePath?: string;
+  /** Ảnh Open Graph (URL tuyệt đối hoặc đường dẫn trong public/). Bỏ trống nếu chưa có. */
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const { title, description, lang, image, type = 'website' } = Astro.props;
+const other = otherLang(lang);
+const alternatePath = Astro.props.alternatePath ?? getAlternatePath(Astro.url.pathname, other);
+
+const base = Astro.site ?? new URL(site.url);
+const canonical = new URL(Astro.url.pathname, base);
+const alternate = new URL(alternatePath, base);
+const ogImage = image ? new URL(image, base).toString() : undefined;
+
+const fullTitle = title === site.name ? title : `${title} · ${site.name}`;
+
+const hreflangs: { lang: Lang | 'x-default'; href: string }[] = [
+  { lang, href: canonical.toString() },
+  { lang: other, href: alternate.toString() },
+  { lang: 'x-default', href: lang === 'vi' ? canonical.toString() : alternate.toString() },
+];
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{hreflangs.map((h) => <link rel="alternate" hreflang={h.lang} href={h.href} />)}
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={localeOf[lang].replace('-', '_')} />
+<meta property="og:locale:alternate" content={localeOf[other].replace('-', '_')} />
+{ogImage && <meta property="og:image" content={ogImage} />}
+
+<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+{ogImage && <meta name="twitter:image" content={ogImage} />}

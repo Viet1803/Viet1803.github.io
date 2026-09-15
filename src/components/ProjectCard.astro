@@ -1,0 +1,64 @@
+---
+import type { Lang } from '../i18n/ui';
+import { formatDate } from '../i18n/utils';
+import { projectUrl, type Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+  /** Dùng h2 ở trang danh sách, h3 khi lồng trong section trang chủ. */
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { project, lang, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const url = projectUrl(project);
+const { title, description, date, tags } = project.data;
+---
+
+<article class="card project-card">
+  <p class="muted project-date">
+    <time datetime={date.toISOString().slice(0, 10)}>{formatDate(date, lang)}</time>
+  </p>
+  <Heading class="project-title">
+    <a href={url}>{title}</a>
+  </Heading>
+  <p class="project-desc">{description}</p>
+  {tags.length > 0 && (
+    <ul class="tags" aria-label="Tags">
+      {tags.map((tag) => <li class="tag">{tag}</li>)}
+    </ul>
+  )}
+</article>
+
+<style>
+  .project-card {
+    position: relative;
+  }
+  .project-date {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  .project-title {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .project-title a {
+    color: var(--color-text);
+  }
+  /* Toàn bộ thẻ bấm được, nhưng vẫn giữ link thật để SEO và bàn phím */
+  .project-title a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .project-card:hover .project-title a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .project-desc {
+    color: var(--color-text-muted);
+    margin: 0;
+    flex: 1;
+  }
+</style>

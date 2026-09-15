@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+import type { Lang } from '../../i18n/ui';
+import { langParams, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('contact.title')} description={t('contact.description')} lang={lang}>
+  <section class="section">
+    <div class="container">
+      <h1>{t('contact.title')}</h1>
+      <p class="lead">{t('contact.intro')}</p>
+
+      <div class="grid contact-grid">
+        <div class="card">
+          <h2>{t('contact.email')}</h2>
+          <a class="contact-link" href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+        <div class="card">
+          <h2>{t('contact.social')}</h2>
+          <ul class="social-list">
+            {site.social.map((s) => (
+              <li>
+                <a class="contact-link" href={s.url} target="_blank" rel="noopener noreferrer me">
+                  {s.label}
+                  <span class="muted social-url">{s.url.replace(/^https?:\/\/(www\.)?/, '')}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  }
+  .card h2 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+  .contact-link {
+    font-size: 1.15rem;
+    font-weight: 550;
+    word-break: break-word;
+  }
+  .social-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .social-url {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+</style>

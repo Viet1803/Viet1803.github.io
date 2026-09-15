@@ -1,0 +1,46 @@
+---
+import { languages, type Lang } from '../i18n/ui';
+import { otherLang, useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  /** Đường dẫn trang tương ứng ở ngôn ngữ kia. */
+  alternatePath: string;
+}
+
+const { lang, alternatePath } = Astro.props;
+const target = otherLang(lang);
+const t = useTranslations(lang);
+---
+
+<a
+  class="lang-switch"
+  href={alternatePath}
+  hreflang={target}
+  lang={target}
+  aria-label={t('lang.switch')}
+  title={languages[target]}
+>
+  {t('lang.short')}
+</a>
+
+<style>
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding-inline: 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .lang-switch:hover {
+    background: var(--color-bg-elevated);
+    text-decoration: none;
+  }
+</style>

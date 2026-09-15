@@ -1,0 +1,112 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {
+  findTranslation,
+  getAllProjects,
+  projectLang,
+  projectSlug,
+  projectUrl,
+} from '../../../data/projects';
+import type { Lang } from '../../../i18n/ui';
+import { formatDate, localizePath, otherLang, useTranslations } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const projects = await getAllProjects();
+  return Promise.all(
+    projects.map(async (project) => {
+      const lang = projectLang(project);
+      const translation = await findTranslation(project, otherLang(lang));
+      // Nếu chưa có bản dịch, nút chuyển ngôn ngữ đưa về danh sách dự án của ngôn ngữ kia.
+      const alternatePath = translation
+        ? projectUrl(translation)
+        : localizePath(otherLang(lang), 'projects');
+      return {
+        params: { lang, slug: projectSlug(project) },
+        props: { project, alternatePath },
+      };
+    }),
+  );
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { project, alternatePath } = Astro.props as Props;
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const { Content } = await render(project);
+const { title, description, date, tags, links, image } = project.data;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  alternatePath={alternatePath}
+  image={image}
+  type="article"
+>
+  <article class="section">
+    <div class="container">
+      <p>
+        <a class="back" href={localizePath(lang, 'projects')}>← {t('projects.back')}</a>
+      </p>
+
+      <header class="project-header">
+        <p class="muted">
+          <time datetime={date.toISOString().slice(0, 10)}>{formatDate(date, lang)}</time>
+        </p>
+        <h1>{title}</h1>
+        <p class="lead">{description}</p>
+        {tags.length > 0 && (
+          <ul class="tags" aria-label="Tags">
+            {tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
+        )}
+        {(links.demo || links.repo) && (
+          <div class="project-links">
+            {links.demo && (
+              <a class="btn" href={links.demo} target="_blank" rel="noopener noreferrer">{t('projects.demo')}</a>
+            )}
+            {links.repo && (
+              <a class="btn btn-outline" href={links.repo} target="_blank" rel="noopener noreferrer">{t('projects.repo')}</a>
+            )}
+          </div>
+        )}
+      </header>
+
+      {image && <img class="project-image" src={image} alt="" loading="lazy" />}
+
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .back {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+  .project-header {
+    max-width: 44rem;
+    margin-bottom: 2.5rem;
+  }
+  .project-header .tags {
+    margin-top: 1rem;
+  }
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .project-image {
+    max-width: 44rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    margin-bottom: 2.5rem;
+  }
+</style>

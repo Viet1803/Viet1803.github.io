@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { site } from '../../data/site';
+import { getFeaturedProjects } from '../../data/projects';
+import type { Lang } from '../../i18n/ui';
+import { langParams, localizePath, useTranslations } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return langParams();
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const projects = await getFeaturedProjects(lang);
+---
+
+<BaseLayout title={site.name} description={t('site.description')} lang={lang}>
+  <section class="section hero">
+    <div class="container hero-inner">
+      <img class="avatar" src={site.avatar} alt="" width="160" height="160" loading="eager" />
+      <div>
+        <p class="muted greeting">{t('home.greeting')}</p>
+        <h1>{site.name}</h1>
+        <p class="tagline">{t('site.tagline')}</p>
+        <p class="lead">{t('home.intro')}</p>
+        <div class="actions">
+          <a class="btn" href={localizePath(lang, 'projects')}>{t('home.cta.projects')}</a>
+          <a class="btn btn-outline" href={localizePath(lang, 'contact')}>{t('home.cta.contact')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {projects.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>{t('home.featured')}</h2>
+          <a href={localizePath(lang, 'projects')}>{t('home.viewAll')} →</a>
+        </div>
+        <div class="grid">
+          {projects.map((p) => <ProjectCard project={p} lang={lang} />)}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .hero-inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+  .avatar {
+    width: clamp(7rem, 14vw, 10rem);
+    height: auto;
+    border-radius: 999px;
+    border: 4px solid var(--color-bg-elevated);
+    box-shadow: var(--shadow);
+  }
+  .greeting {
+    margin-bottom: 0.25rem;
+  }
+  h1 {
+    margin-bottom: 0.2em;
+  }
+  .tagline {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 40rem) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+    }
+    .lead {
+      margin-inline: auto;
+    }
+    .actions {
+      justify-content: center;
+    }
+  }
+</style>
