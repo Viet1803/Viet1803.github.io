@@ -13,15 +13,16 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const t = useTranslations(lang);
 const projects = await getFeaturedProjects(lang);
+const name = site.name[lang];
 ---
 
-<BaseLayout title={site.name} description={t('site.description')} lang={lang}>
+<BaseLayout title={name} description={t('site.description')} lang={lang}>
   <section class="section hero">
     <div class="container hero-inner">
       <img class="avatar" src={site.avatar} alt="" width="160" height="160" loading="eager" />
       <div>
         <p class="muted greeting">{t('home.greeting')}</p>
-        <h1>{site.name}</h1>
+        <h1>{name}</h1>
         <p class="tagline">{t('site.tagline')}</p>
         <p class="lead">{t('home.intro')}</p>
         <div class="actions">

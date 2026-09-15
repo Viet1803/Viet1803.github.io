@@ -21,13 +21,13 @@ npm run preview    # preview the production build
 npx astro check    # TypeScript and template checks
 ```
 
-The root `/` redirects to `/vi/`. The English version lives under `/en/`.
+The root `/` redirects to `/en/` (English is the default). The Vietnamese version lives under `/vi/`.
 
 ## Edit personal info
 
 Open [src/data/site.ts](src/data/site.ts) and replace:
 
-- `name`: display name in the header, footer and page titles.
+- `name.en`, `name.vi`: display name per language in the header, footer and page titles.
 - `email`, `social`: shown on the Contact page and in the footer.
 - `avatar`: image path inside `public/`. Put a real photo at `public/images/avatar.jpg` and update this value.
 - `cv.vi`, `cv.en`: PDF paths inside `public/`. Leave empty to hide the CV button.
@@ -111,13 +111,13 @@ npm run preview    # xem thử bản build
 npx astro check    # kiểm tra lỗi TypeScript và template
 ```
 
-Trang gốc `/` tự chuyển sang `/vi/`. Bản tiếng Anh ở `/en/`.
+Trang gốc `/` tự chuyển sang `/en/` (tiếng Anh là mặc định). Bản tiếng Việt ở `/vi/`.
 
 ## Sửa thông tin cá nhân
 
 Mở [src/data/site.ts](src/data/site.ts) và thay:
 
-- `name`: tên hiển thị ở header, footer, tiêu đề trang.
+- `name.en`, `name.vi`: tên hiển thị theo ngôn ngữ ở header, footer, tiêu đề trang.
 - `email`, `social`: hiện ở trang Liên hệ và footer.
 - `avatar`: đường dẫn ảnh trong `public/`. Đặt ảnh thật vào `public/images/avatar.jpg` rồi đổi giá trị này.
 - `cv.vi`, `cv.en`: đường dẫn file PDF trong `public/`. Để chuỗi rỗng thì nút tải CV tự ẩn.

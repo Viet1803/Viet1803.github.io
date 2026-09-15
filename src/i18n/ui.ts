@@ -4,13 +4,14 @@
  * Nội dung dài (tiểu sử, kỹ năng, kinh nghiệm) nằm ở src/data/profile.ts.
  */
 export const languages = {
-  vi: 'Tiếng Việt',
   en: 'English',
+  vi: 'Tiếng Việt',
 } as const;
 
 export type Lang = keyof typeof languages;
 
-export const defaultLang: Lang = 'vi';
+/** Ngôn ngữ mặc định: trang gốc `/` chuyển về đây, hreflang x-default trỏ về đây. */
+export const defaultLang: Lang = 'en';
 
 export const ui = {
   vi: {
@@ -70,7 +71,7 @@ export const ui = {
   en: {
     'site.tagline': 'Web Developer',
     'site.description':
-      'Personal website of Tran Hoang Viet: about, skills and experience, selected projects, and contact information.',
+      'Personal website of Hoang Viet Tran: about, skills and experience, selected projects, and contact information.',
 
     'nav.home': 'Home',
     'nav.about': 'About',
@@ -93,7 +94,7 @@ export const ui = {
     'home.viewAll': 'View all projects',
 
     'about.title': 'About',
-    'about.description': 'Bio, skills, work experience and education of Tran Hoang Viet.',
+    'about.description': 'Bio, skills, work experience and education of Hoang Viet Tran.',
     'about.skills': 'Skills',
     'about.experience': 'Experience',
     'about.education': 'Education',
@@ -108,7 +109,7 @@ export const ui = {
     'projects.empty': 'No projects yet.',
 
     'contact.title': 'Contact',
-    'contact.description': 'How to reach Tran Hoang Viet by email and on social networks.',
+    'contact.description': 'How to reach Hoang Viet Tran by email and on social networks.',
     'contact.intro':
       'Have an opportunity, a project to build, or just want to say hello? Send an email or connect on social media and I will get back to you soon.',
     'contact.email': 'Email',

@@ -110,7 +110,7 @@ Tổng khoảng 30 file.
 > Tiến độ 2026-09-09: Bước 2 → 9 và Bước 11 đã hoàn thành. Khác kế hoạch: nội dung dài trang Giới thiệu tách ra `src/data/profile.ts` thay vì `ui.ts`; helper dự án nằm ở `src/data/projects.ts`; thêm `vercel.json` để redirect `/` bằng HTTP thật; `z` import từ `astro/zod` (Astro 7). Còn lại Bước 10 (push GitHub, deploy Vercel, cập nhật URL thật).
 
 ### Bước 2. Cấu hình i18n và layout khung ✅
-- `astro.config.mjs`: `site`, `i18n { defaultLocale: 'vi', locales: ['vi','en'], routing: { prefixDefaultLocale: true } }`, tích hợp sitemap.
+- `astro.config.mjs`: `site`, `i18n { defaultLocale: 'en', locales: ['en','vi'], routing: { prefixDefaultLocale: true } }`, tích hợp sitemap. (Đổi mặc định sang tiếng Anh ngày 2026-09-15 theo yêu cầu; tên tiếng Anh "Hoang Viet Tran", tiếng Việt "Trần Hoàng Việt".)
 - Tạo `src/i18n/ui.ts`, `src/i18n/utils.ts`, `src/data/site.ts`.
 - Tạo `global.css` (biến màu sáng/tối, font Inter, container, typography).
 - Tạo `BaseLayout.astro`, `Header.astro`, `Footer.astro` (menu tạm).

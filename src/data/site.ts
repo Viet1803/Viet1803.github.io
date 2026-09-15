@@ -3,8 +3,11 @@
  * Thay các giá trị placeholder bên dưới bằng thông tin thật của bạn.
  */
 export const site = {
-  /** Tên hiển thị (header, footer, tiêu đề trang). */
-  name: 'Trần Hoàng Việt',
+  /** Tên hiển thị theo ngôn ngữ (header, footer, tiêu đề trang). */
+  name: {
+    en: 'Hoang Viet Tran',
+    vi: 'Trần Hoàng Việt',
+  },
   /** Chữ viết tắt cho avatar placeholder. */
   initials: 'TV',
   /** URL công khai của site. Phải trùng với `site` trong astro.config.mjs. */

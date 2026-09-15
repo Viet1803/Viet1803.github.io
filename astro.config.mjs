@@ -11,8 +11,8 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore',
   i18n: {
-    defaultLocale: 'vi',
-    locales: ['vi', 'en'],
+    defaultLocale: 'en',
+    locales: ['en', 'vi'],
     routing: {
       prefixDefaultLocale: true,
     },
@@ -20,12 +20,12 @@ export default defineConfig({
   // Trang gốc chuyển về ngôn ngữ mặc định. Bản build tĩnh sinh trang meta-refresh;
   // vercel.json bổ sung redirect HTTP thật khi chạy trên Vercel.
   redirects: {
-    '/': '/vi/',
+    '/': '/en/',
   },
   integrations: [
     sitemap({
       i18n: {
-        defaultLocale: 'vi',
+        defaultLocale: 'en',
         locales: { vi: 'vi-VN', en: 'en-US' },
       },
       filter: (page) => !page.includes('/404'),

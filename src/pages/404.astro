@@ -3,28 +3,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { defaultLang } from '../i18n/ui';
 import { localizePath, useTranslations } from '../i18n/utils';
 
-// Trang 404 dùng chung cho mọi URL nên hiển thị cả hai ngôn ngữ.
-const vi = useTranslations('vi');
+// Trang 404 dùng chung cho mọi URL nên hiển thị cả hai ngôn ngữ, tiếng Anh trước.
 const en = useTranslations('en');
+const vi = useTranslations('vi');
 ---
 
-<BaseLayout title={`${vi('404.title')} / ${en('404.title')}`} description={vi('404.text')} lang={defaultLang} alternatePath={localizePath('en')}>
+<BaseLayout title={`${en('404.title')} / ${vi('404.title')}`} description={en('404.text')} lang={defaultLang} alternatePath={localizePath('vi')}>
   <section class="section">
     <div class="container not-found">
       <p class="code muted">404</p>
 
-      <div lang="vi">
-        <h1>{vi('404.title')}</h1>
-        <p class="lead">{vi('404.text')}</p>
-        <a class="btn" href={localizePath('vi')}>{vi('404.home')}</a>
+      <div lang="en">
+        <h1>{en('404.title')}</h1>
+        <p class="lead">{en('404.text')}</p>
+        <a class="btn" href={localizePath('en')}>{en('404.home')}</a>
       </div>
 
       <hr />
 
-      <div lang="en">
-        <h2>{en('404.title')}</h2>
-        <p class="lead">{en('404.text')}</p>
-        <a class="btn btn-outline" href={localizePath('en')}>{en('404.home')}</a>
+      <div lang="vi">
+        <h2>{vi('404.title')}</h2>
+        <p class="lead">{vi('404.text')}</p>
+        <a class="btn btn-outline" href={localizePath('vi')}>{vi('404.home')}</a>
       </div>
     </div>
   </section>
